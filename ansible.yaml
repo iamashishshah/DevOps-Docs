@@ -1,0 +1,39 @@
+courses:
+  course_name: "JavaScript backend developer"
+  price: &my_course_price 199
+  is_public: true
+  version: 1.5.1
+  release_date: 2025-04-21 12:23:43
+  pre_enroll: null
+  tags: 
+    - python
+    - javascript
+    - node 
+    - express
+  cousrse_ta: ["ashish", "mukul", "anurag", "anirudh"]
+  ta_details: 
+    - name: "anirudh"
+      email: "ani@lco.dev"
+      role: "content admin"
+    - name: "anurag"
+      email: "anu@lco.dev"
+      role: "discussion admin"
+    - {name: "rakesh", email: "rak@lco.dev", role: "devops"}
+  short_desc: > # this doesn't store in the give format
+    here is a short 
+    description about this course
+    backend with javascript
+    and test the backend using js file
+  long_desc: | # this pipe stores in the formated text
+    now here we can store the long 
+      and all indentation data without worrying anything
+      about whitespace and other
+  process_payment: *my_course_price
+
+  adv: &adv
+    mykey: "myval"
+
+  another_adv: 
+    one: "Two",
+    two: "Three",
+    <<: &adv

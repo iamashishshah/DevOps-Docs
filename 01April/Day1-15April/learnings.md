@@ -1,0 +1,2 @@
+what is devops?
+- dekh you wrote the code which is now ready to go live for the end user, now you'll push it on github, and manually you'll do the same which suppose your friend has pull your codebase and try to run your code, but he/she might will get error cuz whatever you'r using or whatever setup  you have on your local might your frind not have.
