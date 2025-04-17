@@ -1,4 +1,4 @@
-find
+`find
 mv
 copy or cp
 chmod
@@ -83,4 +83,4 @@ sudo chmod 700
 ## How to generate ssh key to login
 ssh-keygen -t rsa 4096 -f  Desktop/id_rsa.codersgyan         ./Desktop(destination folder name)
 
-ls | grep id-
+ls | grep id-`
