@@ -16,6 +16,7 @@ first cmd line: sudo apt update && sudo apt upgrade
 
 # cmd lines and their menaing
 getent passwd: to get list of all the users
+getent passwd username: to get details of a user
 awk -F: '$3 >= 1000 { print $1, $3 }' /etc/passwd (to see the user list in more formated way)
 
 sudo apt update && sudo apt upgrade: to get everything latest
@@ -33,16 +34,46 @@ sudo mkdir /home/chaicode: its a giving a absolute path way: go to home and make
 sudo passwd username(chaicode): passwd also creates password for the provided user(Hello)
 sudo useradd -m useraname: it creates user's home dir but didn't set the password and didn't create the skeleton files(so don't create user via this cmd line)
 sudo adduser username: creates a new user with default config\
-sudo userdel -r username: to delete the existing user
+sudo userdel (-r) username: to delete the existing user but not the home directory
+sudo deluser --remove-home username: to delete the home dir as well
+sudo useradd useranme: to create user manually and will have to set password manually
+sudo passwd username: to set the password for the user created manually
+sudo useradd -m username: to create user's home directory as well but we've to set password manually here aslo(we need home dirctory because that user's data will be stored there only and no other user can touch and  edit this data untill specified permissions) we don't reccomand to use this cmd line because we've to make so many skeleton files, lime temp, desktop, documents, screenshot etc. we don't want these things to do manually, so we don't use this cmd line
+sudo su - <username>: to switch between different users
+exit: to exit from one user to another
+sudo chfn ashish: allow to change the fullname, roon number, phone number, home phone number in case you want to change.
+sudo ls -la /home/ashish: you're able to do this because ubuntu(default) has sudo or in the sudoers list
+sudo gpasswd -d username groupname: to delete the a user from a group
+sudo usermod -aG sudo username: to add into sudo group or to give sudo permission to a user
+
+Description: | Done till now
+    How to see users
+    How to  create users(two type)
+    How to delete users
+
+sudo cat /etc/group: to see the group
+sudo usermod -l newusername oldusername: to change the user login name from old to new but it doesn't change the home dir and that will be conflict so change the dir as well
+sudo usermod -d /home/ashish_dev -m ashish_dev: ashish_dev is the new username 
 
 
 
 
+Task 1: how can I add a user from one group to another group?
+Task 2: how can I make a group and then add user in this group
+Task 3: How can I give sudo permission to a user.
 
+sudo addgroup/groupadd groupname: to create a group
+getent group: to see the list of group
+getent group groupname: to see the particular group
+sudo usermod -aG devteam ashish: to add user into group(usermode: modify user, -a: append the user else will delete all the user in that group, G: group, groupname, username)
+sudo usermod -aG devteam john: to add user into group
+sudo usermod -aG devteam emmaj: to add user into group
 
+getent group devteam: to verify the user into that group
+devteam:x:1002:ashish,john,emma: expected output
+groups username(ashish): check in which group a user belongs
 
-
-
+sudo gpasswd -d username groupname: to delete the a user from a group
 
 
 
@@ -62,3 +93,53 @@ $: normal user
 home/alice, /home/bob, etc.: diff user with home directory
 
 
+
+
+Tasks: I've three user temp, one, and twodev: i've to add them into group devteam
+Done✅
+
+Some tasks I can perform: 
+1. create a user using both the types and set the password 'Hello'
+2. create three user and create a group and add them into that group
+
+
+
+
+# ----------- authentication using password created users  ----------------------------
+
+ssh username@ip: but authenticaion will be denied(defualt by aws but we can enable it)
+login into server usign ssh and then update a file which is in config folder which is: etc(it contains everything about configuration of a system)
+/etc/ssh/sshd_config.d: this is the file where password authentication is disabled |
+    after doingn yes to, re-start the ssh client to reflect
+sudo systemctl restart ssh: to restart the ssh client
+
+# ---------- authentication using ssh via local user --------------
+
+| here is the scenario: I've created a local user and now I want to login this user using ssh key not using password? 
+| for this we've to go to home dir of user and create a folder ".ssh" folder which is in the home directory of that user and create a ssh file
+
+sudo -u pokemon mkdir -p /home/pokemon/.ssh: |
+    run mkdir as user pokemon because this can be done from anywhere and -p say that if it's any folder that doesn't belong then create them also recursively.
+sudo chmod 700 /home/pokemon/.shh: change the permission, owner will have everything permission and no one else
+ssh-keygen -t rsa -b 4096 -f nameOfKey: it generates a key that you'll share to that user to login into server. |
+    It will create two key: one is public (.pub) which we've to store on server and another is private key, which we'll give  to pokemon, and for more details see how ssh works
+echo "key.pub" | sudo -u pokemon tee /home/pokemon/.ssh/authorized_keys: adding the public key to file authorized_keys
+sudo chmod 600 /home/pokemon/.ssh/authorized_keys: change the permission to rw only and pokemon can do this only to make it more secure. |
+    now you can give private key to user(so that he can validate when he'll login)
+    now user can run this cmd line
+chmod 400 "privat key file": to change the permission if you're getting an error
+ssh -i "user_rsa.pokemon" pokemon@server_ip:  this will connect to server of that user using ssh client
+
+
+# --------------- root authentication -----------
+| create password for root user
+| change the  authenticaion method for login using password and add one more field
+PermitRootLogin yes :  and restart the ssh client
+| login using password
+
+
+# -----------Some vim cmd lines ---------------
+i: to insert
+:q!:  to quit
+:w: to save
+:wq: save and quite

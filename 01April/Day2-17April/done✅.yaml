@@ -1,0 +1,12 @@
+Description: User done |
+    create a user
+    delete a user
+    add into group a user
+    remove a user from a group
+
+Descriptio: Group done |
+    create a group
+    add user into that group
+    list group
+    delete group
+    remove user from a group
