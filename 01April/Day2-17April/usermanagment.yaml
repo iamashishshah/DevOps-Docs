@@ -1,0 +1,64 @@
+# the first task we do is check how many dependencies are there that to be upgraded: run cmd line
+sudo apt update: #checks the to be upgraded file
+
+# What is sudo and what is apt?
+sudo: sudo is short hand for "super user do" and it has the privilleges as root user cmd do.
+apt: advanced package manager, it is a tool to update and manage packages
+
+# sudo apt update && sudo apt upgrade
+
+# why do we require user management in the first place?
+# suppose you've your phone and your the owner of your phone ofc, and for some time your friend asks for your phone, what will you do? will you just give him your phone,  if that so(if this is your goal or you wnat to do it) no, right? you want ki  your whatsapp mesage should not read by your friend baki sbkuch  krle, then you'll create a user or profile for your friend and you'll give id and password for that and you'll give the phone to your friend.
+
+# ---------------- USERS AND USER'S PERMISSION ------------------
+first cmd line: sudo apt update && sudo apt upgrade
+
+
+# cmd lines and their menaing
+getent passwd: to get list of all the users
+awk -F: '$3 >= 1000 { print $1, $3 }' /etc/passwd (to see the user list in more formated way)
+
+sudo apt update && sudo apt upgrade: to get everything latest
+whoami: we can see which user is currently
+sudo /etc/passwd or getent passwd: to all the users in the machine
+    output: ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/bin/bash
+            username:password:uid:gid:(comment field: fullname or description):home dir: default shell
+sudo cat /etc/shadow: the list the password because all the pass stores here
+id username(mail/ubuntu):  more about that user
+
+# there are two ways to create users
+# 1: Low level cmd line 
+sudo useradd username: it doesn't create default file or folder, we've to do manually
+sudo mkdir /home/chaicode: its a giving a absolute path way: go to home and make a directory
+sudo passwd username(chaicode): passwd also creates password for the provided user(Hello)
+sudo useradd -m useraname: it creates user's home dir but didn't set the password and didn't create the skeleton files(so don't create user via this cmd line)
+sudo adduser username: creates a new user with default config\
+sudo userdel -r username: to delete the existing user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# my questions
+# why are we learning that much of user management?
+# why do we want to know about ID or other things about a user in this system.
+# what is skeleton files?: in windows weve documents, desktop, downloaads etc these are the skeleton files that must be present right? to every os's user
+
+# How can I add a user from one group to another and how can i change the password as well as how can i delete a user
+$: normal user
+#: root user
+/: root dir
+~: home dir
+home/alice, /home/bob, etc.: diff user with home directory
+
+
