@@ -1,0 +1,18 @@
+almost everything is file in linux: why?
+# when you insert your USB drive what happens internally? How am I able to access the data inside of USB?
+file permission: d rwe rwe rwe (777): 
+
+# ------------------- Files ----------------------
+1.  bin -> usr/bin: /usr/bin contains most of the executable binary files — i.e., commands and programs that users and scripts use. |
+    eg: ls, cat, nano, vim, python, node etc
+ln -s /original/path /link/path: ln(link) -s(symbolic), this cmd line creates sybolic line
+ln -s [original_file_or_folder] [shortcut_path_you_want_to_create]
+which toolname: to see the location of where tool is installed
+
+
+🔧 What is the /boot directory?
+The /boot directory contains all the files needed to boot your Linux system. This includes the Linux kernel, initramfs (initial RAM disk), bootloader (like GRUB) config files, and microcode updates.
+
+When your computer starts, it loads files from /boot to bring up the Linux OS.: som
+
+

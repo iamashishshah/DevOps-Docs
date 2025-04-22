@@ -134,7 +134,7 @@ ssh -i "user_rsa.pokemon" pokemon@server_ip:  this will connect to server of tha
 # --------------- root authentication -----------
 | create password for root user
 | change the  authenticaion method for login using password and add one more field
-PermitRootLogin yes :  and restart the ssh client
+PermitRootLogin yes :  and restart the ssh client 
 | login using password
 
 
